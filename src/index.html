@@ -354,23 +354,24 @@
       <div style="flex: 1; height: 1px; background: linear-gradient(to right, rgba(148, 163, 184, 0.15), transparent);"></div>
     </div>
 
-    <!-- Topology caption -->
-    <div style="margin-bottom: 32px; max-width: 760px;">
-      <p style="font-family: 'Space Grotesk', sans-serif; font-size: 17px; line-height: 1.6; color: #cbd5e1; margin-bottom: 12px; text-wrap: pretty;">My skillset rendered as the network I'd actually deploy — <span style="color: #f1f5f9; font-weight: 600;">five skill domains as VLANs</span>, individual <span style="color: #f1f5f9; font-weight: 600;">skills as hosts</span>.</p>
-      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #64748b; display: flex; flex-wrap: wrap; gap: 14px;">
-        <span><span style="color: #475569;">$</span> show topology <span style="color: #475569;">--</span>brief</span>
-        <span style="color: #334155;">·</span>
-        <span>5 domains</span>
-        <span style="color: #334155;">·</span>
-        <span>19 skills</span>
-        <span style="color: #334155;">·</span>
-        <span style="color: #00FF87;">all interfaces up/up</span>
+    <div style="display: flex; flex-direction: column; gap: clamp(20px, 3vw, 32px);">
+      <!-- Topology caption -->
+      <div style="max-width: 760px;">
+        <p style="font-family: 'Space Grotesk', sans-serif; font-size: 17px; line-height: 1.6; color: #cbd5e1; margin-bottom: 12px; text-wrap: pretty;">My skillset rendered as the network I'd actually deploy — <span style="color: #f1f5f9; font-weight: 600;">five skill domains as VLANs</span>, individual <span style="color: #f1f5f9; font-weight: 600;">skills as hosts</span>.</p>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #64748b; display: flex; flex-wrap: wrap; gap: 14px;">
+          <span><span style="color: #475569;">$</span> show topology <span style="color: #475569;">--</span>brief</span>
+          <span style="color: #334155;">·</span>
+          <span>5 domains</span>
+          <span style="color: #334155;">·</span>
+          <span>19 skills</span>
+          <span style="color: #334155;">·</span>
+          <span style="color: #00FF87;">all interfaces up/up</span>
+        </div>
       </div>
-    </div>
 
-    <!-- Network Topology Diagram -->
-    <div style="border: 1px solid rgba(148, 163, 184, 0.08); border-radius: 10px; background: #0f172a; padding: clamp(16px, 2vw, 28px); margin-bottom: 16px; overflow: hidden;">
-      <svg viewBox="0 0 1000 620" preserveAspectRatio="xMidYMin meet" style="width: 100%; height: auto; display: block; overflow: visible;">
+      <!-- Network Topology Diagram -->
+      <div style="border: 1px solid rgba(148, 163, 184, 0.08); border-radius: 10px; background: #0f172a; padding: clamp(16px, 2vw, 28px); overflow-x: auto;">
+        <svg viewBox="0 0 1000 620" preserveAspectRatio="xMidYMin meet" style="width: min(100%, 1000px); height: auto; display: block; min-width: 760px;">
 
         <!-- ===== INTERNET ===== -->
         <text x="500" y="13" textanchor="middle" style="font-family: 'JetBrains Mono', monospace; font-size: 9px; fill: #475569; letter-spacing: 0.8px;">wan0 · 0.0.0.0/0</text>
@@ -533,7 +534,7 @@
     </div>
 
     <!-- Topology legend -->
-    <div style="display: flex; flex-wrap: wrap; gap: 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b;">
+    <div style="display: flex; flex-wrap: wrap; gap: 18px 24px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #64748b; margin-top: 18px;">
       <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 8px; background: rgba(0,255,135,0.04); border: 1px solid rgba(0,255,135,0.35); display: inline-block;"></span>core / trunk</span>
       <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 8px; background: rgba(148,163,184,0.05); border: 1px solid rgba(148,163,184,0.3); display: inline-block;"></span>access switch</span>
       <span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 14px; height: 8px; background: rgba(15,23,42,0.7); border: 1px solid rgba(148,163,184,0.15); display: inline-block;"></span>host (skill)</span>
