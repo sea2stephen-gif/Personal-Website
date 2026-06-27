@@ -1,38 +1,24 @@
-# Personal Portfolio Website
+# stephenvanto.com
 
-This repository contains a bundled portfolio site and now includes a clean source workflow.
+Personal portfolio site, self-hosted on a home server and auto-deployed on every push to `main`.
 
-## Source workflow
+## Editing
 
-Edit these source files:
+All source files are in `src/`:
 
-- `src/head.html` — head contents
-- `src/index.html` — body content
-- `src/styles.css` — styling
+- `src/head.html` — `<head>` contents (meta tags, font links, etc.)
+- `src/index.html` — `<body>` content
+- `src/styles.css` — styles (inlined into the built page)
+- `src/assets/` — fonts and JS referenced by the page
 
-## Commands
+Push changes to `main` and the live site updates automatically within seconds.
 
-### Extract source files
-If you need to generate source files from the existing bundle:
-```bash
-python src/extract.py
-```
+## How deployment works
 
-### Build bundled portfolio
-After editing source files:
-```bash
-python build.py
-```
+1. A GitHub webhook fires on every push to `main`
+2. The server pulls the latest code (`git reset --hard origin/main`)
+3. `assemble.py` concatenates `head.html` + `styles.css` + `index.html` into a single `dist/index.html` and copies `src/assets/` to `dist/assets/`
+4. Docker rebuilds and restarts the nginx container serving the `dist/` directory
+5. Cloudflare Tunnel routes `stephenvanto.com` → the local nginx instance (no open ports on the home network)
 
-### Publish root site
-If your host serves from repo root:
-```bash
-python src/publish.py
-```
-
-## Notes
-
-- `Stephen To - Portfolio.html` remains the bundle target.
-- `index.html` and `styles.css` are created only when you run `python src/publish.py`.
-- Keep `src/` files as your working source.
-
+A daily cron job also runs the deploy as a fallback in case a webhook delivery is missed.
